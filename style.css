@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Esteban&display=swap");
 
+:root {
+  --rand-color: yellow;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +30,7 @@ body {
   min-height: 200px;
   min-width: 200px;
   background-color: white;
-  border: 3px solid grey;
+  /* border: 3px solid grey; */
 }
 
 .buttons {
@@ -137,10 +141,23 @@ input:checked + .sliderToggle:before {
 .copyright {
   font-size: 12px;
   color: grey;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 20px;
+}
+
+/* grid styling */
+
+.canvas {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.canvasBox {
+  background-color: white;
+}
+
+.canvasBoxHovered {
+  background-color: black;
+}
+
+.canvasBoxHoveredRand {
+  background-color: var(--rand-color);
 }
