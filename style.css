@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Esteban&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Esteban", serif;
+  background-color: rgba(237, 236, 236, 1);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.header {
+  font-size: 64px;
+  margin-top: 30px;
+}
+
+.canvas {
+  height: 420px;
+  width: 420px;
+  min-height: 200px;
+  min-width: 200px;
+  background-color: white;
+  border: 3px solid grey;
+}
+
+.buttons {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.clearButton {
+  border: 2px solid grey;
+  padding: 5px 30px;
+  border-radius: 10%;
+}
+
+/* Slider style */
+
+.slideContainer {
+  width: 40%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.slider {
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  width: 70%;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+/* Toggle-Switch style */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 22px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.sliderToggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.sliderToggle:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 1.5px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .sliderToggle {
+  background-color: #2196f3;
+}
+
+input:focus + .sliderToggle {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .sliderToggle:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.sliderToggle.round {
+  border-radius: 34px;
+}
+
+.sliderToggle.round:before {
+  border-radius: 50%;
+}
+
+.toggleContainer {
+  display: flex;
+  gap: 10px;
+}
+
+/* Copyright styling */
+
+.copyright {
+  font-size: 12px;
+  color: grey;
+}
