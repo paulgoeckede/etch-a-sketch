@@ -54,55 +54,42 @@ function fillCanvas(){
     } else {
         for (let i = 0; i<slider.value*slider.value; i++){
             const currentBox = document.getElementById(`box${i}`);
-            
-            /* if (backgroundColor == "rgb(255, 255, 255)"){
-                currentBox.addEventListener("mouseenter", function(){
-                    currentBox.style.backgroundColor= `${generateRandomColor()}`;
-                });
-            } else {
-                currentBox.addEventListener("mouseenter", function(){
 
-                    const oldR = backgroundColor.slice(4,5);
-                    const oldG = backgroundColor.slice(5,6);
-                    const oldB = backgroundColor.slice(6,7);
-                    const newR = oldR * 1.1;
-                    const newG = oldG * 1.1;
-                    const newB = oldB * 1.1;
-
-                    const newRGB = `rgb(${newR}, ${newG}, ${newB})`;
-                    currentBox.style.backgroundColor = `${newRGB}`;
-
-                    console.log(newRGB);
-                })
-            } */
-            
             currentBox.addEventListener("mouseenter", function(){
                 const style = getComputedStyle(currentBox);
                 const backgroundColor = style.backgroundColor;
 
                 if (backgroundColor == "rgb(255, 255, 255)"){
-                        currentBox.style.backgroundColor= `${generateRandomColor()}`;
-                } else {    
-                        const oldR = backgroundColor.slice(4,5);
-                        const oldG = backgroundColor.slice(5,6);
-                        const oldB = backgroundColor.slice(6,7);
+                        const newColor = generateRandomColor();
+                        currentBox.style.backgroundColor= newColor;
+                        currentBox.value = newColor;
+                        console.log(currentBox.value);
+                } else {
+                        const substr = currentBox.value.slice(4, currentBox.value.length-1);
+                        const array = substr.split(","); 
+                        let newR = parseInt(array[0]) - (parseInt(array[0]/10));
+                        let newG = parseInt(array[1]) - (parseInt(array[1]/10));
+                        let newB = parseInt(array[2]) - (parseInt(array[2]/10));
 
-                        /* Folgendes Problem: Du musst eine Lösung dafür finden, perfekt den R G und B Wert aus dem String zu schneiden. Das klappt aktuell nicht */
-
-                        console.log(oldR);
-                        console.log(oldG);
-                        console.log(oldB);
-
-                        const newR = addTenPercent(oldR);
-                        const newG = addTenPercent(oldG);
-                        const newB = addTenPercent(oldB);
-    
                         const newRGB = `rgb(${newR}, ${newG}, ${newB})`;
-                        currentBox.style.backgroundColor = `${newRGB}`;
+                        currentBox.style.backgroundColor = newRGB;
                 }
             });
+
+
         }
     }
+}
+
+function multiplyRGB(string){
+    const substr = string.slice(4, string.length-1);
+    const array = substr.split(",");
+    let newR = parseInt(array[0])*0.8;
+    let newG = parseInt(array[1])*0.8;
+    let newB = parseInt(array[2])*0.8;
+
+    const newRGB = `rgb(${newR}, ${newG}, ${newB})`;
+    return newRGB;
 }
 
 function addTenPercent(value){
@@ -121,23 +108,6 @@ function generateRandomColor(){
     const rgb = `rgb(${r}, ${g}, ${b})`;
     return rgb;
 }
-
-function darkenColor(item){
-    const style = getComputedStyle(item);
-    const backgroundColor = style.backgroundColor;
-
-    const oldR = backgroundColor.slice(4,5);
-    const oldG = backgroundColor.slice(5,6);
-    const oldB = backgroundColor.slice(6,7);
-    const newR = oldR * 1.1;
-    const newG = oldG * 1.1;
-    const newB = oldB * 1.1;
-
-    const newRGB = `rgb(${newR}, ${newG}, ${newB})`;
-    return newRGB;
-}
-
-
 
 function calculateBoxDim(){
     const boxDim = 420/slider.value;
