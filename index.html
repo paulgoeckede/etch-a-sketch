@@ -10,27 +10,31 @@
   </head>
   <body>
     <h1 class="header">Etch-a-sketch</h1>
-    <div class="canvas" id="canvas"></div>
-    <div class="buttons">
-      <button class="clearButton">Clear</button>
-      <div class="slideContainer">
-        <p>Dimensions:</p>
-        <input
-          type="range"
-          min="16"
-          max="50"
-          value="16"
-          class="slider"
-          id="myRange"
-        />
-        <span id="demo"></span>
-      </div>
-      <div class="toggleContainer">
-        <p>Rainbow-Mode:</p>
-        <label class="switch">
-          <input type="checkbox" id="toggleRGB" />
-          <span class="sliderToggle round"></span>
-        </label>
+    <div class="content">
+      <div class="canvas" id="canvas"></div>
+      <div class="buttons">
+        <div class="buttonContainer">
+          <button class="clearButton">Clear</button>
+        </div>
+        <div class="slideContainer">
+          <p>Dimensions:</p>
+          <input
+            type="range"
+            min="16"
+            max="50"
+            value="16"
+            class="slider"
+            id="myRange"
+          />
+          <span id="demo"></span>
+        </div>
+        <div class="toggleContainer">
+          <p>Rainbow-Mode:</p>
+          <label class="switch">
+            <input type="checkbox" id="toggleRGB" />
+            <span class="sliderToggle round"></span>
+          </label>
+        </div>
       </div>
     </div>
     <p class="copyright">&copy; Paul Göckede</p>
