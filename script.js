@@ -63,42 +63,22 @@ function fillCanvas(){
                         const newColor = generateRandomColor();
                         currentBox.style.backgroundColor= newColor;
                         currentBox.value = newColor;
-                        console.log(currentBox.value);
                 } else {
-                        const substr = currentBox.value.slice(4, currentBox.value.length-1);
-                        const array = substr.split(","); 
-                        let newR = parseInt(array[0]) - (parseInt(array[0]/10));
-                        let newG = parseInt(array[1]) - (parseInt(array[1]/10));
-                        let newB = parseInt(array[2]) - (parseInt(array[2]/10));
+                        const originalColor = currentBox.value.slice(4, currentBox.value.length-1);
+                        const originalArray = originalColor.split(","); 
+                        const currentColor = backgroundColor.slice(4, backgroundColor.length-1);
+                        const currentArray = currentColor.split(",");
+                        
+                        let newR = Math.floor(currentArray[0] - (originalArray[0]/9));
+                        let newG = Math.floor(currentArray[1] - (originalArray[1]/9));
+                        let newB = Math.floor(currentArray[2] - (originalArray[2]/9));
 
                         const newRGB = `rgb(${newR}, ${newG}, ${newB})`;
-                        currentBox.style.backgroundColor = newRGB;
+                        currentBox.style.backgroundColor= newRGB;
                 }
             });
-
-
         }
     }
-}
-
-function multiplyRGB(string){
-    const substr = string.slice(4, string.length-1);
-    const array = substr.split(",");
-    let newR = parseInt(array[0])*0.8;
-    let newG = parseInt(array[1])*0.8;
-    let newB = parseInt(array[2])*0.8;
-
-    const newRGB = `rgb(${newR}, ${newG}, ${newB})`;
-    return newRGB;
-}
-
-function addTenPercent(value){
-    const newNum = value*1.1;
-
-    if(value<=255){
-        return newNum;
-    }
-    return 255;
 }
 
 function generateRandomColor(){
@@ -125,13 +105,3 @@ function deleteCanvas(){
 }
 
 fillCanvas();
-
-
-/* 
-create a random color
-add event listener for every div with mouseenter
-assign random color to div if event fires
-save color value somehow
-check if div is already assigned a new color
-if so make it darker by 10%
-*/
